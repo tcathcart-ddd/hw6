@@ -41,7 +41,7 @@ exports.handler = async function(event) {
         // increment the counter
         numResults = numResults + 1
         // append movie to movie list
-        movies.push(moviesFromCsv[i])
+        returnValue.push(moviesFromCsv[i])
       }
 
     }
@@ -49,7 +49,7 @@ exports.handler = async function(event) {
     // a lambda function returns a status code and a string of data
     return {
       statusCode: 200, // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
-      body: JSON.stringify(movies) // a string of data
+      body: JSON.stringify(returnValue) // a string of data
     }
   }
 }
