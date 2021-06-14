@@ -35,13 +35,21 @@ exports.handler = async function(event) {
     }
 
     for (let i=0; i < moviesFromCsv.length; i++) {
+      // if it's a match for the search
+      if (moviesFromCsv[i].endYear == year || moviesFromCsv[i].genres.includes(genre)) {
+
+        // increment the counter
+        numResults = numResults + 1
+        // append movie to movie list
+        movies.push(moviesFromCsv[i])
+      }
 
     }
 
     // a lambda function returns a status code and a string of data
     return {
       statusCode: 200, // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
-      body: `Hello from the back-end!` // a string of data
+      body: JSON.stringify(movies) // a string of data
     }
   }
 }
